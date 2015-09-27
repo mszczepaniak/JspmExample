@@ -13,5 +13,6 @@
     "fs": "github:jspm/nodelibs-fs@^0.1.0"
   },
   "github:jspm/nodelibs-fs@0.1.2": {},
-  "github:systemjs/plugin-json@0.1.0": {}
+  "github:systemjs/plugin-json@0.1.0": {},
+  "npm:typescript@1.6.2": {}
 }
