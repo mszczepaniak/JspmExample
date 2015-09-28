@@ -1,0 +1,1 @@
+module.exports = require("npm:union@0.4.4/lib");

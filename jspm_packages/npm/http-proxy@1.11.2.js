@@ -1,0 +1,1 @@
+module.exports = require("npm:http-proxy@1.11.2/index");

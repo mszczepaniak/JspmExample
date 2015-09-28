@@ -1,0 +1,1 @@
+module.exports = require("npm:ecstatic@0.7.6/lib/ecstatic");

@@ -1,0 +1,1 @@
+module.exports = require("npm:corser@2.0.0/lib/corser");

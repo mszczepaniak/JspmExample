@@ -1,0 +1,36 @@
+/* */ 
+var assert = require("assert"),
+    connect = require("connect"),
+    request = require("request"),
+    vows = require("vows"),
+    union = require("../lib/index");
+vows.describe('union/body-parser').addBatch({"When using union with connect body parsing via urlencoded() or json()": {
+    topic: function() {
+      union.createServer({
+        buffer: false,
+        before: [connect.urlencoded(), connect.json(), function(req, res) {
+          res.end(JSON.stringify(req.body, true, 2));
+        }]
+      }).listen(8082, this.callback);
+    },
+    "a request to /": {
+      topic: function() {
+        request.post({
+          uri: 'http://localhost:8082/',
+          headers: {'content-type': 'application/json'},
+          body: JSON.stringify({
+            a: "foo",
+            b: "bar"
+          })
+        }, this.callback);
+      },
+      "should respond with a body-decoded object": function(err, res, body) {
+        assert.isNull(err);
+        assert.equal(res.statusCode, 200);
+        assert.deepEqual(JSON.parse(body), {
+          a: 'foo',
+          b: 'bar'
+        });
+      }
+    }
+  }}).export(module);

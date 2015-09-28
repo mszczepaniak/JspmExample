@@ -1,0 +1,1 @@
+module.exports = require("npm:requires-port@0.0.1/index");
